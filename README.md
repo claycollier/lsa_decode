@@ -10,3 +10,7 @@ from the Windows registry. This is useful for extracting a forgotten password fo
 
 Unfortunately, the hex-formatted output isn't immediately readable. This script reads the raw data format output 
 by Passcape's tool, converts it to readable ASCII/UTF-8, and writes it out to the console.
+
+The script reads from stdin if no file is specified on the command line.
+
+sample.txt contains sample output from Passcape's extraction tool.
