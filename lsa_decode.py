@@ -1,27 +1,21 @@
 #!/usr/bin/env python3
 
 import sys
+import argparse
 
 def main():
-     try:
-          filename = sys.argv[1]
-     except IndexError:
-          print('Usage: %s filename' % sys.argv[0])
-          sys.exit(1)
+     parser = argparse.ArgumentParser(description='Decodes LSA secret data.')
+     parser.add_argument('-f', "--infile", type=argparse.FileType('r'), 
+               metavar='filename', help="Specify the file to read", default='-')
+     args = parser.parse_args()
 
-     text = decode(filename)
+     text = decode(args.infile)
      if text != '':
           print(text)
 
-def decode(fname):
-     try:
-          infile = open(fname, 'r')
-     except IOError as e:
-          print(e)
-          return ''
-
+def decode(input_file):
      out = list()
-     for line in infile:
+     for line in input_file:
           chars = line.split()
           for c in chars:
                try:
